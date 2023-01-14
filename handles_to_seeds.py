@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from os import path
+import time
 
 # CONSTANTS #
 WEED = 4.20
@@ -7,6 +8,8 @@ LIST_LEN = 1000
 
 with open("handles/handles_list.txt", "r") as handles_file:
     handles = handles_file.read().splitlines()
+
+seed_index = 1
 
 for handle in handles:
     if path.exists(f"seeds/{handle}.txt"):
@@ -36,3 +39,5 @@ for handle in handles:
                     break
             if index == LIST_LEN:
                 break
+    print(f"[{time.time()}][OK] seed #{seed_index} created for: {handle}")
+    seed_index = seed_index + 1
